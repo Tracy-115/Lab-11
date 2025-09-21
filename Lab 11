@@ -4,20 +4,22 @@
 #include <iostream>
 using namespace std;
 
-const int NR_GRADES = 2, NR_STUDENTS = 3;
-
+// Struct to represent one student in the cafeteria
 struct Student {
-    string name;
-    int id;
-    int * grades;
+    string name;     // student's name
+    int id;          // student ID
+    string *request; // pointer to a dynamically allocated array of food requests
+    int numRequests; // number of food requests
 
+    // release memory 
     ~Student() {
-        if (grades) 
-            delete [] grades;
-        grades = nullptr;
+        if (request)
+            delete [] request;
+        request = nullptr;
     }
 };
 
+// Functions
 void inputStudent(Student *);
 void displayStudent(Student *);
 
