@@ -56,12 +56,20 @@ void inputStudent(Student *sptr) {
     cout << endl;
 }
 
-void displayStudent(Student * sptr) {
-    cout << "Student summary:\n";
+// Display a student's info
+void displayStudent(Student *sptr) {
+    cout << "\nSummary\n";
     cout << "Name: " << sptr->name << endl;
     cout << "ID: " << sptr->id << endl;
-    for (int i = 0; i < NR_GRADES; i++)
-        cout << "Grade #" << i + 1 << ": " 
-             << sptr->grades[i] << endl;
-    cout << endl << endl;
+
+    cout << "Requested food items:\n";
+    if (sptr->numRequests == 0) {
+        cout << "  None\n";
+    } 
+    else {
+        for (int i = 0; i < sptr->numRequests; i++) {
+            cout << sptr->request[i] << endl;
+        }
+    }
+    cout<<endl;
 }
