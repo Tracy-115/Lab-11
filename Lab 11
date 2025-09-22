@@ -35,21 +35,25 @@ int main() {
     return 0;
 }
 
-void inputStudent(Student * sptr) {
-    static int nrStu = 1;
-    cout << "Input data for Student #" << nrStu << ":\n";
+void inputStudent(Student *sptr) {
     cout << "Name: ";
-    getline(cin, sptr->name);
+    cin >> sptr->name;
     cout << "ID: ";
     cin >> sptr->id;
-    sptr -> grades = new int[NR_GRADES];
-    for (int i = 0; i < NR_GRADES; i++) {
-        cout << "Grade #" << i + 1 << ": ";
-        cin >> sptr->grades[i];
+    cout << "How many food items would you like to request? ";
+    cin >> sptr->numRequests;
+    // clear newline so that there will be no problem to get input 
+    cin.ignore(); 
+
+    // Dynamically allocate an array of strings of that size
+    sptr->request = new string[sptr->numRequests];
+
+    // Input each requested food item
+    for (int i = 0; i < sptr->numRequests; i++) {
+        cout << "Food item #" << i + 1 << ": ";
+        getline(cin, sptr->request[i]);
     }
-    cin.ignore();
-    cout << endl << endl;
-    nrStu++;
+    cout << endl;
 }
 
 void displayStudent(Student * sptr) {
